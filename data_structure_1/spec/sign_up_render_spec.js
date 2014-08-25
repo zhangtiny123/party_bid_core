@@ -4,10 +4,6 @@ describe("SignUp Render", function() {
     beforeEach(function() {
         init_activity_database();
         var two_activities = [{
-            name: "first activity",
-            sign_ups: [],
-            bids: []
-        }, {
             name: "second activity",
             sign_ups: [
                 {
@@ -24,6 +20,10 @@ describe("SignUp Render", function() {
                 }
             ],
             bids: []
+        },{
+            name: "first activity",
+            sign_ups: [],
+            bids: []
         }];
         localStorage.activities = JSON.stringify(two_activities);
         localStorage.current_activity = "second activity";
@@ -35,7 +35,9 @@ describe("SignUp Render", function() {
 
 
     it("should show all signed up users by activity name", function(){
+        console.log('activity_here:'+localStorage.activities);
         var sign_ups = render_sign_ups("second activity");
+        console.info(sign_ups);
 
         expect(sign_ups.length).toBe(3);
         expect(sign_ups[0].name).toBe("仝键");

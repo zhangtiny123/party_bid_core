@@ -5,11 +5,7 @@ describe("Bids and Bidding Render", function() {
     beforeEach(function() {
         init_activity_database();
         var activities = JSON.parse(localStorage.activities);
-        var two_activities = [{
-            name: "first activity",
-            sign_ups: [],
-            bids: []
-        }, {
+        var two_activities = [ {
             name: "second activity",
             sign_ups: [
                 {
@@ -65,6 +61,10 @@ describe("Bids and Bidding Render", function() {
                     ]
                 }
             ]
+        },{
+            name: "first activity",
+            sign_ups: [],
+            bids: []
         }];
         activities = two_activities;
         localStorage.activities = JSON.stringify(activities);
@@ -78,6 +78,8 @@ describe("Bids and Bidding Render", function() {
 
     it("should show all bids", function(){
         var bids = transform_bids_to_view_model("second activity");
+
+        console.log('bids:'+bids);
 
         expect(bids.length).toBe(2);
         expect(bids[0].name).toBe("竞价1");
