@@ -29,8 +29,8 @@ var transform_biddings_to_view_model = function(activity_name, bid_name) {
         return bid.name == bid_name;
     });
 
-    var result = _.sortBy(current_bid.biddings,function(bid){return bid.price});
-    var result1=_.groupBy(result,function(temp){return temp.price});
-    return _.find(result1,function(value,key){return value.length==1});
+    var sorted_list = _.sortBy(current_bid.biddings,function(bid){return bid.price});
+    var grouped_list =_.groupBy(sorted_list,function(temp){return temp.price});
+    return _.find(grouped_list,function(value,key){return value.length==1});
 
 };
