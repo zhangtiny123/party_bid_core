@@ -28,9 +28,4 @@ describe("Bid", function() {
         expect(activities[0].bids[0].name).toBe("竞价1");
         expect(activities[0].bids[0].biddings.length).toBe(0);
     });
-
-
-
-
-
 });
