@@ -6,6 +6,26 @@ describe("Bidding", function() {
         init_activity_database();
         init_two_activity();
         init_sign_ups();
+        var bids = [
+            {
+                name: "竞价1",
+                activity_id: "1",
+                biddings: []
+            },
+            {
+                name: "竞价2",
+                activity_id: "1",
+                biddings: []
+            },
+            {
+                name:"竞价1",
+                activity_id: "0",
+                biddings: []
+            }
+
+        ];
+
+        localStorage.bids = JSON.stringify(bids);
         localStorage.current_activity = "1";
         localStorage.current_bid = "竞价1";
         localStorage.is_bidding = "";
@@ -13,7 +33,7 @@ describe("Bidding", function() {
 
     afterEach(function(){
         localStorage.clear();
-    })
+    });
 
     it("should bid successfully when it is bidding and user has signed up", function(){
         var phone_no = "13600000000";
@@ -36,18 +56,21 @@ describe("Bidding", function() {
         notify_sms_received(sms_json);
 
         var activities = JSON.parse(localStorage.activities);
+        var bids = JSON.parse((localStorage.bids));
         expect(bids[0].biddings.length).toBe(0);
         // empty string
         localStorage.is_bidding = "";
         notify_sms_received(sms_json);
 
         var activities = JSON.parse(localStorage.activities);
+        var bids = JSON.parse((localStorage.bids));
         expect(bids[0].biddings.length).toBe(0);
         // no attribute
         localStorage.removeItem("is_bidding");
         notify_sms_received(sms_json);
 
         var activities = JSON.parse(localStorage.activities);
+        var bids = JSON.parse((localStorage.bids));
         expect(bids[0].biddings.length).toBe(0);
     });
 
@@ -70,7 +93,7 @@ describe("Bidding", function() {
 
         var bids = JSON.parse(localStorage.bids);
         expect(bids[0].biddings.length).toBe(1);
-        expect(bids[0].biddings[0].name).toBe("仝键");
+        expect(bids[0].biddings[0].name).toBe("仝");
         expect(bids[0].biddings[0].phone).toBe(phone_no);
         expect(bids[0].biddings[0].price).toBe("12");
     });

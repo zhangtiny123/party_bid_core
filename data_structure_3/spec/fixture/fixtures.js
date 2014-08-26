@@ -6,7 +6,6 @@ function init_activity_database(){
 
     localStorage.sign_ups = "[]";
     localStorage.bids = "[]";
-    localStorage.biddings = "[]";
 }
 
 
@@ -56,6 +55,6 @@ function init_sign_ups(){
             phone:"13800000000",
             activity_id:"1"
         }
-    ]
+    ];
     localStorage.sign_ups = JSON.stringify(sign_ups);
 }
