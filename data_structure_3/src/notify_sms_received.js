@@ -24,12 +24,13 @@ var is_repeated_bid = function(phone_number) {
     var current_activity_id = localStorage.current_activity;
     var current_bid_name = localStorage.current_bid;
 
-    for (var i=0; i<bids.length; i++) {
-        if (bids[i].activity_id == current_activity_id && bids[i].name == current_bid_name) {
-            var current_bid = bids[i];
-            break;
-        }
-    }
+    var current_activity_bid = _.filter(bids, function(bid) {
+        return bid.activity_id == current_activity_id;
+    });
+
+    var current_bid = _.find(current_activity_bid, function(bid) {
+        return bid.name == current_bid_name;
+    });
 
     return _.find(current_bid.biddings, function(bidding) {
         return bidding.phone == phone_number;
@@ -67,12 +68,13 @@ var bid_save = function(message, phone) {
     var current_activity_id = localStorage.current_activity;
     var current_bid_name = localStorage.current_bid;
 
-    for (var i=0; i<bids.length; i++) {
-        if (bids[i].activity_id == current_activity_id && bids[i].name == current_bid_name) {
-            var current_bid = bids[i];
-            break;
-        }
-    }
+    var current_activity_bid = _.filter(bids, function(bid) {
+        return bid.activity_id == current_activity_id;
+    });
+
+    var current_bid = _.find(current_activity_bid, function(bid) {
+        return bid.name == current_bid_name;
+    });
 
     var bid_item = {
         name : get_name_by_phone(phone),
