@@ -73,7 +73,7 @@ var bid_save = function(message, phone) {
         name : get_name_by_phone(phone),
         phone : phone,
         price : message.slice(2)
-    }
+    };
 
     current_bid.biddings.push(bid_item);
     localStorage.activities = JSON.stringify(activities);
@@ -86,6 +86,7 @@ var sign_up_save = function(message, phone) {
     var current_activity = _.find(activities, function(activity) {
         return activity.name == current_activity_name;
     });
+
     current_activity.sign_ups.push(sign_up);
     localStorage.activities = JSON.stringify(activities);
 };

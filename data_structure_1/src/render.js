@@ -1,6 +1,5 @@
 var render_sign_ups = function(activity_name) {
     var activities = JSON.parse(localStorage.activities);
-
     var current_activity = _.find(activities, function(activity) {
         return activity.name = activity_name;
     });
@@ -10,7 +9,6 @@ var render_sign_ups = function(activity_name) {
 
 var transform_bids_to_view_model = function(activity_name) {
     var activities = JSON.parse(localStorage.activities);
-
     var current_activity = _.find(activities, function(activity) {
         return activity.name = activity_name;
     });
@@ -20,11 +18,9 @@ var transform_bids_to_view_model = function(activity_name) {
 
 var transform_biddings_to_view_model = function(activity_name, bid_name) {
     var activities = JSON.parse(localStorage.activities);
-
     var current_activity = _.find(activities, function(activity) {
         return activity.name = activity_name;
     });
-
     var current_bid = _.find(current_activity.bids, function(bid) {
         return bid.name == bid_name;
     });
