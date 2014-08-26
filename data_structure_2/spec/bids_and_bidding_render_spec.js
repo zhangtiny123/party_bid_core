@@ -31,26 +31,31 @@ describe("Bids and Bidding Render", function() {
                 biddings:{
                     "竞价1":[
                         {
+                            name:"仝键",
                             phone:"13600000000",
                             price: "12"
 
                         },
                         {
+                            name:"于硕",
                             phone:"15600000000",
                             price: "10"
                         }
                     ],
                     "竞价2": [
                         {
+                            name:"仝键",
                             phone:"13600000000",
                             price: "10"
 
                         },
                         {
+                            name:"于硕",
                             phone:"15600000000",
                             price: "12"
                         },
                         {
+                            name:"吴京川",
                             phone:"13800000000",
                             price: "10"
                         }
@@ -73,8 +78,8 @@ describe("Bids and Bidding Render", function() {
         var bids = transform_bids_to_view_model("1");
 
         expect(bids.length).toBe(2);
-        expect(bids[0].name).toBe("竞价1");
-        expect(bids[1].name).toBe("竞价2");
+        expect(bids[0]).toBe("竞价1");
+        expect(bids[1]).toBe("竞价2");
     });
 
     it("should show minimum not repeatable bidding", function(){
